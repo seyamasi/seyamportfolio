@@ -1,0 +1,1074 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seyam Sediqi - Graphic Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #2F80ED, #56CCF2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .glow-button {
+            box-shadow: 0 0 20px rgba(47, 128, 237, 0.3);
+            transition: all 0.3s ease;
+        }
+        .glow-button:hover {
+            box-shadow: 0 0 30px rgba(47, 128, 237, 0.6);
+            transform: translateY(-2px);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(47, 128, 237, 0.1);
+        }
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(40px); }
+        }
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .particle {
+            position: absolute;
+            background: rgba(47, 128, 237, 0.1);
+            border-radius: 50%;
+            animation: particle-float 8s infinite linear;
+        }
+        @keyframes particle-float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #2F80ED;
+        }
+        .nav-link.active {
+            color: #2F80ED;
+        }
+        .service-icon {
+            background: linear-gradient(135deg, #2F80ED, #56CCF2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(47, 128, 237, 0.9);
+            opacity: 0;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        .testimonial-card {
+            background: linear-gradient(135deg, rgba(47, 128, 237, 0.1), rgba(86, 204, 242, 0.05));
+            border: 1px solid rgba(47, 128, 237, 0.2);
+        }
+        .blog-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .form-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            border-color: #2F80ED;
+            box-shadow: 0 0 0 3px rgba(47, 128, 237, 0.1);
+        }
+        .logo-3d {
+            background: linear-gradient(135deg, #2F80ED, #56CCF2);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 8px rgba(47, 128, 237, 0.3);
+            transform: perspective(500px) rotateX(15deg);
+        }
+        .emblem-3d {
+            background: linear-gradient(135deg, #2F80ED, #56CCF2, #2F80ED);
+            border-radius: 50%;
+            box-shadow: 
+                0 8px 16px rgba(47, 128, 237, 0.3),
+                inset 0 2px 4px rgba(255, 255, 255, 0.1);
+            transform: perspective(200px) rotateX(10deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-black bg-opacity-90 backdrop-blur-md z-50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Replace this src with your logo image path -->
+                <img src="seyamlogo.png" alt="Seyam Sediqi" class="h-10 w-auto">
+                <!-- Alternative: Keep text logo -->
+                <!-- <div class="text-2xl font-bold logo-3d playfair">Seyam Sediqi</div> -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="nav-link active" onclick="showPage('home')">Home</a>
+                    <a href="#" class="nav-link" onclick="showPage('about')">About</a>
+                    <a href="#" class="nav-link" onclick="showPage('services')">Services</a>
+                    <a href="#" class="nav-link" onclick="showPage('portfolio')">Portfolio</a>
+                    <a href="#" class="nav-link" onclick="showPage('blog')">Blog</a>
+                    <a href="#" class="nav-link" onclick="showPage('contact')">Contact</a>
+                    <a href="#" class="nav-link" onclick="showPage('login')">Login</a>
+                </div>
+                <div class="md:hidden">
+                    <button onclick="toggleMobileMenu()" class="text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-black bg-opacity-95">
+            <div class="px-4 py-2 space-y-2">
+                <a href="#" class="block py-2 nav-link" onclick="showPage('home'); toggleMobileMenu()">Home</a>
+                <a href="#" class="block py-2 nav-link" onclick="showPage('about'); toggleMobileMenu()">About</a>
+                <a href="#" class="block py-2 nav-link" onclick="showPage('services'); toggleMobileMenu()">Services</a>
+                <a href="#" class="block py-2 nav-link" onclick="showPage('portfolio'); toggleMobileMenu()">Portfolio</a>
+                <a href="#" class="block py-2 nav-link" onclick="showPage('blog'); toggleMobileMenu()">Blog</a>
+                <a href="#" class="block py-2 nav-link" onclick="showPage('contact'); toggleMobileMenu()">Contact</a>
+                <a href="#" class="block py-2 nav-link" onclick="showPage('login'); toggleMobileMenu()">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+            <!-- Animated Particles Background -->
+            <div class="particles">
+                <div class="particle" style="left: 10%; width: 4px; height: 4px; animation-delay: 0s;"></div>
+                <div class="particle" style="left: 20%; width: 6px; height: 6px; animation-delay: 2s;"></div>
+                <div class="particle" style="left: 30%; width: 3px; height: 3px; animation-delay: 4s;"></div>
+                <div class="particle" style="left: 40%; width: 5px; height: 5px; animation-delay: 1s;"></div>
+                <div class="particle" style="left: 50%; width: 4px; height: 4px; animation-delay: 3s;"></div>
+                <div class="particle" style="left: 60%; width: 6px; height: 6px; animation-delay: 5s;"></div>
+                <div class="particle" style="left: 70%; width: 3px; height: 3px; animation-delay: 2.5s;"></div>
+                <div class="particle" style="left: 80%; width: 5px; height: 5px; animation-delay: 4.5s;"></div>
+                <div class="particle" style="left: 90%; width: 4px; height: 4px; animation-delay: 1.5s;"></div>
+            </div>
+            
+            <!-- Dark Overlay -->
+            <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+            
+            <!-- Hero Content -->
+            <div class="relative z-10 text-center max-w-4xl mx-auto px-4">
+                <div class="floating-animation">
+                    <div class="w-32 h-32 mx-auto mb-8 relative">
+                        <!-- Perfect Circle Container -->
+                        <div class="w-full h-full rounded-full overflow-hidden border-4 border-blue-500 shadow-2xl">
+                            <!-- Your Profile Picture -->
+                            <img src="seyam.JPG" alt="Seyam Sediqi" class="w-full h-full object-cover">
+                        </div>
+
+                    </div>
+                </div>
+                <h1 class="text-6xl md:text-8xl font-bold playfair mb-6">
+                    <span class="gradient-text">Turn Ideas</span><br>
+                    <span class="text-white">Into Visual</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto">
+                    Crafting exceptional digital experiences through innovative design and creative storytelling
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="showPage('portfolio')" class="glow-button bg-blue-600 hover:bg-blue-700 text-white px-12 py-4 rounded-full text-lg font-semibold">
+                        Explore My Work
+                    </button>
+                    <button onclick="showPage('login')" class="bg-transparent border-2 border-blue-600 text-blue-400 hover:bg-blue-600 hover:text-white px-12 py-4 rounded-full text-lg font-semibold transition-all duration-300">
+                        Client Login
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page">
+        <section class="py-20 px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl font-bold playfair gradient-text mb-4">About Me</h2>
+                    <p class="text-gray-400 text-lg">Passionate designer with a vision for excellence</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="text-center">
+                        <div class="w-64 h-64 mx-auto mb-8 relative">
+                            <!-- Perfect Circle Container -->
+                            <div class="w-full h-full rounded-full overflow-hidden border-4 border-blue-500 shadow-2xl">
+                                <!-- Your Profile Picture -->
+                                <img src="seyam.JPG" alt="Seyam Sediqi" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <div class="inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600 px-4 py-2 rounded-full">
+                                <span class="text-white font-semibold">Graphic Designer</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-3xl font-bold mb-6">Creative Designer & Visual Storyteller</h3>
+                        <p class="text-gray-300 text-lg mb-6 leading-relaxed">
+                            With over 5 years of experience in graphic design, I specialize in creating compelling visual narratives that resonate with audiences. My passion lies in transforming complex ideas into simple, elegant designs that communicate effectively.
+                        </p>
+                        <p class="text-gray-300 text-lg mb-8 leading-relaxed">
+                            I believe that great design is not just about aesthetics—it's about solving problems, telling stories, and creating meaningful connections between brands and their audiences.
+                        </p>
+                        
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="text-center p-6 bg-gray-800 rounded-lg card-hover">
+                                <div class="text-3xl font-bold gradient-text mb-2">5+</div>
+                                <div class="text-gray-400">Years Experience</div>
+                            </div>
+                            <div class="text-center p-6 bg-gray-800 rounded-lg card-hover">
+                                <div class="text-3xl font-bold gradient-text mb-2">500+</div>
+                                <div class="text-gray-400">Projects Completed</div>
+                            </div>
+                            <div class="text-center p-6 bg-gray-800 rounded-lg card-hover">
+                                <div class="text-3xl font-bold gradient-text mb-2">50+</div>
+                                <div class="text-gray-400">Happy Clients</div>
+                            </div>
+                            <div class="text-center p-6 bg-gray-800 rounded-lg card-hover">
+                                <div class="text-3xl font-bold gradient-text mb-2">15+</div>
+                                <div class="text-gray-400">Awards Won</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Services Page -->
+    <div id="services" class="page">
+        <section class="py-20 px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl font-bold playfair gradient-text mb-4">Services</h2>
+                    <p class="text-gray-400 text-lg">Comprehensive design solutions for your business</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gray-800 p-8 rounded-xl card-hover">
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Logo Design</h3>
+                        <p class="text-gray-400">Creating memorable brand identities that stand out in the market</p>
+                    </div>
+                    
+                    <div class="bg-gray-800 p-8 rounded-xl card-hover">
+                        <div class="w-20 h-20 mx-auto mb-6 flex flex-wrap justify-center items-center gap-2 p-2 bg-gray-700 rounded-lg">
+                            <!-- Top Row: Facebook, Instagram, X -->
+                            <div class="flex gap-2 mb-1">
+                                <!-- Facebook -->
+                                <svg class="w-6 h-6 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                </svg>
+                                <!-- Instagram -->
+                                <svg class="w-6 h-6 text-pink-500" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                                <!-- X (Twitter) -->
+                                <svg class="w-6 h-6 text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                </svg>
+                            </div>
+                            <!-- Bottom Row: TikTok, LinkedIn -->
+                            <div class="flex gap-2 justify-center">
+                                <!-- TikTok -->
+                                <svg class="w-6 h-6 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                                </svg>
+                                <!-- LinkedIn -->
+                                <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Social Media Management</h3>
+                        <p class="text-gray-400">Strategic content creation and community engagement</p>
+                    </div>
+                    
+                    <div class="bg-gray-800 p-8 rounded-xl card-hover">
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Digital Marketing</h3>
+                        <p class="text-gray-400">Data-driven campaigns that deliver measurable results</p>
+                    </div>
+                    
+                    <div class="bg-gray-800 p-8 rounded-xl card-hover">
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Poster & Banner Design</h3>
+                        <p class="text-gray-400">Eye-catching promotional materials for events and campaigns</p>
+                    </div>
+                    
+                    <div class="bg-gray-800 p-8 rounded-xl card-hover">
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Video Editing</h3>
+                        <p class="text-gray-400">Professional video production and post-production services</p>
+                    </div>
+                    
+                    <div class="bg-gray-800 p-8 rounded-xl card-hover">
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">SEO Optimization</h3>
+                        <p class="text-gray-400">Boosting your online visibility and search rankings</p>
+                    </div>
+                    
+                    <div class="bg-gray-800 p-8 rounded-xl card-hover">
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-lg bg-gradient-to-br from-yellow-500 to-orange-500 flex items-center justify-center">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 2l1.17 1.17L12 2l1.83 1.17L15 2l1 1v18l-1 1h-2l-1.83-1.17L12 22l-1.17-1.17L9 22l-1-1V3l1-1zm3 15c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Photography</h3>
+                        <p class="text-gray-400">Professional photography for products, events, and portraits</p>
+                    </div>
+                    
+                    <div class="bg-gray-800 p-8 rounded-xl card-hover">
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-lg bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4zM14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Reels Creation</h3>
+                        <p class="text-gray-400">Engaging short-form content for Instagram and TikTok</p>
+                    </div>
+                    
+                    <div class="bg-gray-800 p-8 rounded-xl card-hover">
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M3 3h18v18H3V3zm16 16V5H5v14h14zM7 7h10v2H7V7zm0 4h10v2H7v-2zm0 4h7v2H7v-2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Web Design</h3>
+                        <p class="text-gray-400">Modern, responsive websites that convert visitors into customers</p>
+                    </div>
+                    
+                    <div class="bg-gray-800 p-8 rounded-xl card-hover">
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM4 6h16v2H4V6zm0 4h16v8H4v-8z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Business Card Design</h3>
+                        <p class="text-gray-400">Professional business cards that make lasting first impressions</p>
+                    </div>
+                </div>
+                
+                <!-- Customer Comments Section -->
+                <div class="mt-20">
+                    <div class="text-center mb-16">
+                        <h3 class="text-4xl font-bold playfair gradient-text mb-4">What My Clients Say</h3>
+                        <p class="text-gray-400 text-lg">Testimonials from satisfied customers</p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="testimonial-card p-8 rounded-xl">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-white font-bold">JD</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">John Doe</h4>
+                                    <p class="text-gray-400 text-sm">CEO, Tech Corp</p>
+                                </div>
+                            </div>
+                            <div class="flex mb-4">
+                                <span class="text-yellow-400">★★★★★</span>
+                            </div>
+                            <p class="text-gray-300">"Seyam's design work exceeded our expectations. The logo he created perfectly captures our brand essence."</p>
+                        </div>
+                        
+                        <div class="testimonial-card p-8 rounded-xl">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-white font-bold">SM</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Sarah Miller</h4>
+                                    <p class="text-gray-400 text-sm">Marketing Director</p>
+                                </div>
+                            </div>
+                            <div class="flex mb-4">
+                                <span class="text-yellow-400">★★★★★</span>
+                            </div>
+                            <p class="text-gray-300">"Professional, creative, and always delivers on time. Highly recommend for any design project."</p>
+                        </div>
+                        
+                        <div class="testimonial-card p-8 rounded-xl">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-white font-bold">MJ</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Mike Johnson</h4>
+                                    <p class="text-gray-400 text-sm">Startup Founder</p>
+                                </div>
+                            </div>
+                            <div class="flex mb-4">
+                                <span class="text-yellow-400">★★★★★</span>
+                            </div>
+                            <p class="text-gray-300">"The social media content Seyam created helped us increase engagement by 300%. Amazing work!"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Portfolio Page -->
+    <div id="portfolio" class="page">
+        <section class="py-20 px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl font-bold playfair gradient-text mb-4">Portfolio</h2>
+                    <p class="text-gray-400 text-lg">A showcase of my creative work</p>
+                </div>
+                
+                <!-- Filter Buttons -->
+                <div class="flex flex-wrap justify-center gap-4 mb-12">
+                    <button onclick="filterPortfolio('all')" class="filter-btn active bg-blue-600 text-white px-6 py-2 rounded-full">All</button>
+                    <button onclick="filterPortfolio('logos')" class="filter-btn bg-gray-800 text-gray-300 px-6 py-2 rounded-full hover:bg-blue-600 hover:text-white">Logos</button>
+                    <button onclick="filterPortfolio('print')" class="filter-btn bg-gray-800 text-gray-300 px-6 py-2 rounded-full hover:bg-blue-600 hover:text-white">Banners & Posters</button>
+                    <button onclick="filterPortfolio('video')" class="filter-btn bg-gray-800 text-gray-300 px-6 py-2 rounded-full hover:bg-blue-600 hover:text-white">Video</button>
+                    <button onclick="filterPortfolio('social')" class="filter-btn bg-gray-800 text-gray-300 px-6 py-2 rounded-full hover:bg-blue-600 hover:text-white">Social Media</button>
+                    <button onclick="filterPortfolio('photography')" class="filter-btn bg-gray-800 text-gray-300 px-6 py-2 rounded-full hover:bg-blue-600 hover:text-white">Photography</button>
+                </div>
+                
+                <!-- Portfolio Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="portfolio-item logos" data-category="logos">
+                        <div class="bg-gray-800 h-64 rounded-lg flex items-center justify-center">
+                            <div class="emblem-3d w-20 h-20 flex items-center justify-center">
+                                <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="text-center">
+                                <h3 class="text-xl font-bold mb-2">Brand Logo</h3>
+                                <p class="text-sm">3D Emblem Design</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item print" data-category="print">
+                        <div class="bg-gradient-to-r from-blue-600 to-purple-600 h-64 rounded-lg flex items-center justify-center">
+                            <div class="text-center">
+                                <h3 class="text-2xl font-bold mb-2">Event Banner</h3>
+                                <p class="text-sm opacity-80">Modern Design</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="text-center">
+                                <h3 class="text-xl font-bold mb-2">Event Promotion</h3>
+                                <p class="text-sm">Banner Design</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item social" data-category="social">
+                        <div class="bg-gradient-to-br from-pink-500 to-orange-400 h-64 rounded-lg flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-4xl mb-2">📱</div>
+                                <h3 class="text-xl font-bold">Social Post</h3>
+                            </div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="text-center">
+                                <h3 class="text-xl font-bold mb-2">Instagram Post</h3>
+                                <p class="text-sm">Social Media Design</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    
+                    <div class="portfolio-item photography" data-category="photography">
+                        <div class="bg-gradient-to-bl from-green-500 to-teal-600 h-64 rounded-lg flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-4xl mb-2">📸</div>
+                                <h3 class="text-xl font-bold">Photography</h3>
+                            </div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="text-center">
+                                <h3 class="text-xl font-bold mb-2">Product Photo</h3>
+                                <p class="text-sm">Professional Photography</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item logos" data-category="logos">
+                        <div class="bg-gray-800 h-64 rounded-lg flex items-center justify-center">
+                            <div class="emblem-3d w-20 h-20 flex items-center justify-center">
+                                <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="text-center">
+                                <h3 class="text-xl font-bold mb-2">Star Logo</h3>
+                                <p class="text-sm">3D Symbol Design</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item print" data-category="print">
+                        <div class="bg-gradient-to-br from-red-600 to-pink-600 h-64 rounded-lg flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-4xl mb-2">🎪</div>
+                                <h3 class="text-xl font-bold">Event Poster</h3>
+                                <p class="text-sm opacity-80">Concert Design</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="text-center">
+                                <h3 class="text-xl font-bold mb-2">Music Concert</h3>
+                                <p class="text-sm">Event Poster Design</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item print" data-category="print">
+                        <div class="bg-gradient-to-tr from-yellow-500 to-orange-600 h-64 rounded-lg flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-4xl mb-2">🎨</div>
+                                <h3 class="text-xl font-bold">Art Exhibition</h3>
+                                <p class="text-sm opacity-80">Gallery Poster</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="text-center">
+                                <h3 class="text-xl font-bold mb-2">Gallery Opening</h3>
+                                <p class="text-sm">Exhibition Poster</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item video" data-category="video">
+                        <div class="bg-gradient-to-bl from-indigo-600 to-purple-700 h-64 rounded-lg flex items-center justify-center relative">
+                            <div class="text-center">
+                                <div class="text-4xl mb-2">▶️</div>
+                                <h3 class="text-xl font-bold">Promotional Video</h3>
+                                <p class="text-sm opacity-80">Brand Campaign</p>
+                            </div>
+                            <div class="absolute top-2 right-2 bg-black bg-opacity-50 px-2 py-1 rounded text-xs">2:30</div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="text-center">
+                                <h3 class="text-xl font-bold mb-2">Brand Campaign</h3>
+                                <p class="text-sm">Promotional Video</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item video" data-category="video">
+                        <div class="bg-gradient-to-tr from-cyan-600 to-blue-700 h-64 rounded-lg flex items-center justify-center relative">
+                            <div class="text-center">
+                                <div class="text-4xl mb-2">🎞️</div>
+                                <h3 class="text-xl font-bold">Product Demo</h3>
+                                <p class="text-sm opacity-80">Explainer Video</p>
+                            </div>
+                            <div class="absolute top-2 right-2 bg-black bg-opacity-50 px-2 py-1 rounded text-xs">1:45</div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="text-center">
+                                <h3 class="text-xl font-bold mb-2">Product Showcase</h3>
+                                <p class="text-sm">Demo Video</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+    <!-- Blog Page -->
+    <div id="blog" class="page">
+        <section class="py-20 px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl font-bold playfair gradient-text mb-4">Blog</h2>
+                    <p class="text-gray-400 text-lg">Insights and tips from the design world</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <article class="blog-card rounded-xl overflow-hidden card-hover">
+                        <div class="bg-gradient-to-r from-blue-600 to-purple-600 h-48"></div>
+                        <div class="p-6">
+                            <div class="text-blue-400 text-sm mb-2">Design Tips</div>
+                            <h3 class="text-xl font-bold mb-3">10 Essential Design Principles Every Designer Should Know</h3>
+                            <p class="text-gray-400 mb-4">Discover the fundamental principles that form the foundation of great design...</p>
+                            <div class="text-gray-500 text-sm">March 15, 2024</div>
+                        </div>
+                    </article>
+                    
+                    <article class="blog-card rounded-xl overflow-hidden card-hover">
+                        <div class="bg-gradient-to-r from-green-500 to-teal-600 h-48"></div>
+                        <div class="p-6">
+                            <div class="text-blue-400 text-sm mb-2">Branding</div>
+                            <h3 class="text-xl font-bold mb-3">The Psychology of Color in Brand Design</h3>
+                            <p class="text-gray-400 mb-4">How color choices can influence customer perception and brand success...</p>
+                            <div class="text-gray-500 text-sm">March 10, 2024</div>
+                        </div>
+                    </article>
+                    
+                    <article class="blog-card rounded-xl overflow-hidden card-hover">
+                        <div class="bg-gradient-to-r from-pink-500 to-orange-400 h-48"></div>
+                        <div class="p-6">
+                            <div class="text-blue-400 text-sm mb-2">Social Media</div>
+                            <h3 class="text-xl font-bold mb-3">Creating Engaging Social Media Content</h3>
+                            <p class="text-gray-400 mb-4">Strategies for designing content that captures attention and drives engagement...</p>
+                            <div class="text-gray-500 text-sm">March 5, 2024</div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page">
+        <section class="py-20 px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl font-bold playfair gradient-text mb-4">Contact Me</h2>
+                    <p class="text-gray-400 text-lg">Let's bring your vision to life</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6">Get In Touch</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">Email</p>
+                                    <p class="text-gray-400">Seyamdesign@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">Phone</p>
+                                    <p class="text-gray-400">+254 (0) 718007206</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">Location</p>
+                                    <p class="text-gray-400">Nairobi, Kenya</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form class="space-y-6" onsubmit="handleContactSubmit(event)">
+                        <div>
+                            <input type="text" placeholder="Your Name" required class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 outline-none">
+                        </div>
+                        <div>
+                            <input type="email" placeholder="Your Email" required class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 outline-none">
+                        </div>
+                        <div>
+                            <textarea placeholder="Your Message" rows="5" required class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 outline-none resize-none"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Upload Project Brief (Optional)</label>
+                            <input type="file" class="form-input w-full px-4 py-3 rounded-lg text-white">
+                        </div>
+                        <button type="submit" class="glow-button w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Login Page -->
+    <div id="login" class="page">
+        <section class="py-20 px-4">
+            <div class="max-w-md mx-auto">
+                <div class="text-center mb-8">
+                    <h2 class="text-4xl font-bold playfair gradient-text mb-4">Welcome Back</h2>
+                    <p class="text-gray-400">Sign in to your account</p>
+                </div>
+                
+                <form class="space-y-6" onsubmit="handleLogin(event)">
+                    <div>
+                        <input type="email" placeholder="Email Address" required class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 outline-none">
+                    </div>
+                    <div>
+                        <input type="password" placeholder="Password" required class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 outline-none">
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm text-gray-400">Remember me</span>
+                        </label>
+                        <a href="#" class="text-sm text-blue-400 hover:text-blue-300">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="glow-button w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold">
+                        Sign In
+                    </button>
+                </form>
+                
+                <div class="text-center mt-6">
+                    <p class="text-gray-400">Don't have an account? 
+                        <button onclick="showSignup()" class="text-blue-400 hover:text-blue-300">Sign up</button>
+                    </p>
+                </div>
+                
+                <!-- Signup Form (Hidden by default) -->
+                <div id="signupForm" class="hidden mt-8">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold gradient-text">Create Account</h3>
+                    </div>
+                    <form class="space-y-4" onsubmit="handleSignup(event)">
+                        <div>
+                            <input type="text" placeholder="Full Name" required class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 outline-none">
+                        </div>
+                        <div>
+                            <input type="email" placeholder="Email Address" required class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 outline-none">
+                        </div>
+                        <div>
+                            <input type="password" placeholder="Password" required class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 outline-none">
+                        </div>
+                        <button type="submit" class="glow-button w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold">
+                            Create Account
+                        </button>
+                    </form>
+                    <div class="text-center mt-4">
+                        <button onclick="hideSignup()" class="text-blue-400 hover:text-blue-300">Back to Sign In</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Dashboard Page (Hidden by default) -->
+    <div id="dashboard" class="page">
+        <section class="py-20 px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl font-bold playfair gradient-text mb-4">Dashboard</h2>
+                    <p class="text-gray-400 text-lg">Welcome back! Here's your project overview</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gray-800 p-6 rounded-xl">
+                        <h3 class="text-xl font-bold mb-4">Active Projects</h3>
+                        <div class="text-3xl font-bold gradient-text mb-2">3</div>
+                        <p class="text-gray-400">Projects in progress</p>
+                    </div>
+                    
+                    <div class="bg-gray-800 p-6 rounded-xl">
+                        <h3 class="text-xl font-bold mb-4">Messages</h3>
+                        <div class="text-3xl font-bold gradient-text mb-2">7</div>
+                        <p class="text-gray-400">Unread messages</p>
+                    </div>
+                    
+                    <div class="bg-gray-800 p-6 rounded-xl">
+                        <h3 class="text-xl font-bold mb-4">Completed</h3>
+                        <div class="text-3xl font-bold gradient-text mb-2">12</div>
+                        <p class="text-gray-400">Projects completed</p>
+                    </div>
+                </div>
+                
+                <div class="mt-12">
+                    <h3 class="text-2xl font-bold mb-6">Recent Activity</h3>
+                    <div class="space-y-4">
+                        <div class="bg-gray-800 p-4 rounded-lg flex items-center justify-between">
+                            <div>
+                                <h4 class="font-semibold">Logo Design Project</h4>
+                                <p class="text-gray-400 text-sm">Updated 2 hours ago</p>
+                            </div>
+                            <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm">Completed</span>
+                        </div>
+                        
+                        <div class="bg-gray-800 p-4 rounded-lg flex items-center justify-between">
+                            <div>
+                                <h4 class="font-semibold">Social Media Campaign</h4>
+                                <p class="text-gray-400 text-sm">Updated 1 day ago</p>
+                            </div>
+                            <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm">In Progress</span>
+                        </div>
+                        
+                        <div class="bg-gray-800 p-4 rounded-lg flex items-center justify-between">
+                            <div>
+                                <h4 class="font-semibold">Website Redesign</h4>
+                                <p class="text-gray-400 text-sm">Updated 3 days ago</p>
+                            </div>
+                            <span class="bg-yellow-600 text-white px-3 py-1 rounded-full text-sm">Review</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-gray-800 py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <!-- Replace this src with your logo image path -->
+                    <img src="your-logo.png" alt="Seyam Sediqi Logo" class="h-8 w-auto mb-4">
+                    <!-- Alternative: Keep text logo -->
+                    <!-- <h3 class="text-2xl font-bold logo-3d playfair mb-4">Seyam Sediqi</h3> -->
+                    <p class="text-gray-400 mb-4">Creating exceptional digital experiences through innovative design.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://instagram.com/seyamdesign" target="_blank" class="text-blue-400 hover:text-blue-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="https://facebook.com/seyamdesign" target="_blank" class="text-blue-400 hover:text-blue-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="https://tiktok.com/@seyamdesign" target="_blank" class="text-blue-400 hover:text-blue-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                            </svg>
+                        </a>
+                        <a href="https://x.com/seyamdesign" target="_blank" class="text-blue-400 hover:text-blue-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" onclick="showPage('home')" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="#" onclick="showPage('about')" class="text-gray-400 hover:text-white">About</a></li>
+                        <li><a href="#" onclick="showPage('services')" class="text-gray-400 hover:text-white">Services</a></li>
+                        <li><a href="#" onclick="showPage('portfolio')" class="text-gray-400 hover:text-white">Portfolio</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><span class="text-gray-400">Logo Design</span></li>
+                        <li><span class="text-gray-400">Social Media</span></li>
+                        <li><span class="text-gray-400">Photography</span></li>
+                        <li><span class="text-gray-400">Video Editing</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Stay updated with my latest work and design tips.</p>
+                    <form onsubmit="handleNewsletter(event)" class="flex">
+                        <input type="email" placeholder="Your email" required class="form-input flex-1 px-3 py-2 rounded-l-lg text-white placeholder-gray-400 outline-none">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r-lg">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2024 Seyam Sediqi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update navigation
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Portfolio Filter
+        function filterPortfolio(category) {
+            const items = document.querySelectorAll('.portfolio-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Update button states
+            buttons.forEach(btn => {
+                btn.classList.remove('active', 'bg-blue-600', 'text-white');
+                btn.classList.add('bg-gray-800', 'text-gray-300');
+            });
+            event.target.classList.add('active', 'bg-blue-600', 'text-white');
+            event.target.classList.remove('bg-gray-800', 'text-gray-300');
+            
+            // Filter items
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Form Handlers
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for your message! I\'ll get back to you soon.');
+            event.target.reset();
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            alert('Login successful! Redirecting to dashboard...');
+            showPage('dashboard');
+        }
+
+        function handleSignup(event) {
+            event.preventDefault();
+            alert('Account created successfully! Please check your email to verify.');
+            hideSignup();
+        }
+
+        function handleNewsletter(event) {
+            event.preventDefault();
+            alert('Thank you for subscribing to my newsletter!');
+            event.target.reset();
+        }
+
+        // Login/Signup Toggle
+        function showSignup() {
+            document.getElementById('signupForm').classList.remove('hidden');
+        }
+
+        function hideSignup() {
+            document.getElementById('signupForm').classList.add('hidden');
+        }
+
+        // Initialize particles animation
+        function createParticles() {
+            const particles = document.querySelector('.particles');
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.width = (Math.random() * 4 + 2) + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                particles.appendChild(particle);
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9623e02091468468',t:'MTc1MzAyOTM2Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
